@@ -30,7 +30,7 @@ Or install it yourself as:
 ### quick start
 
 ```
-require 'logger_formatter.rb'
+require 'log_formatter.rb'
 require 'log_formatter/ruby_json_formatter'
 
 logger = Logger.new(STDOUT)
@@ -132,6 +132,10 @@ full code to see [examples/ruby_logger](https://github.com/chadlwm/log_formatter
 ### Get Start
 
 ```
+require 'log4r'
+require 'log_formatter'
+require 'log_formatter/log4r_json_formatter'
+
 logger = Log4r::Logger.new('Log4RTest')
 outputter = Log4r::StdoutOutputter.new(
   "console",
