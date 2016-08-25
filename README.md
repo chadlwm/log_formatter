@@ -32,6 +32,9 @@ Or install it yourself as:
 require 'logger_formatter.rb'
 require 'log_formatter/ruby_json_formatter'
 
+logger = Logger.new(STDOUT)
+logger.level = Logger::DEBUG
+
 logger.formatter = RubyJSONFormatter::Base.new
 
 logger.info 'test data'
