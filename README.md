@@ -120,7 +120,7 @@ result:
 }
 ```
 
-full code to see examples/ruby_logger
+full code to see [examples/ruby_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/ruby_logger.rb)
 
 ## Test with Rspec
 
