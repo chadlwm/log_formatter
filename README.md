@@ -35,7 +35,7 @@ require 'log_formatter/ruby_json_formatter'
 logger = Logger.new(STDOUT)
 logger.level = Logger::DEBUG
 
-logger.formatter = RubyJSONFormatter::Base.new
+logger.formatter = Ruby::JSONFormatter::Base.new
 
 logger.info 'test data'
 ```
@@ -55,7 +55,7 @@ result:
 ### set app and common ext info
 
 ```
-logger.formatter =  RubyJSONFormatter::Base.new('app', {'source': 'examples'})
+logger.formatter =  Ruby::JSONFormatter::Base.new('app', {'source': 'examples'})
 logger.info 'test data'
 ```
 
@@ -75,7 +75,7 @@ result:
 ### log with hash
 
 ```
-logger.formatter =  RubyJSONFormatter::Base.new('app', {'source': 'examples'})
+logger.formatter =  Ruby::JSONFormatter::Base.new('app', {'source': 'examples'})
 
 logger.debug({data: "test data", author: 'chad'})
 ```
@@ -99,7 +99,7 @@ result:
 json formatter will add `log_type`,`log_level`,`log_timestamp`，`log_app` as default key, but you can change them if needed.
 
 ```
-logger.formatter =  RubyJSONFormatter::Base.new('app', {'source': 'examples'}) do |config|
+logger.formatter =  Ruby::JSONFormatter::Base.new('app', {'source': 'examples'}) do |config|
   config[:level] = :cus_level
   config[:type] = :cus_type
   config[:app] = :cus_app

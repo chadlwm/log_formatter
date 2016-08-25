@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'log_formatter/ruby_json_formatter'
 
-describe RubyJSONFormatter do
+describe 'Ruby::JSONFormatter' do
   context 'plain initialization' do
-    let(:json_formatter){ RubyJSONFormatter::Base.new }
+    let(:json_formatter){ Ruby::JSONFormatter::Base.new }
     it do
        json_formatter.instance_eval{@app}.should be_nil
        json_formatter.instance_eval{@ext}.should be_empty
@@ -12,7 +12,7 @@ describe RubyJSONFormatter do
   end
 
   context 'specify app name' do
-    let(:json_formatter){ RubyJSONFormatter::Base.new('TestApp') }
+    let(:json_formatter){ Ruby::JSONFormatter::Base.new('TestApp') }
     it do
        json_formatter.instance_eval{@app}.should eq 'TestApp'
        json_formatter.instance_eval{@ext}.should be_empty
@@ -21,7 +21,7 @@ describe RubyJSONFormatter do
   end
 
   context 'specify ext' do
-    let(:json_formatter){ RubyJSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
+    let(:json_formatter){ Ruby::JSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
     it do
        json_formatter.instance_eval{@app}.should eq 'TestApp'
        json_formatter.instance_eval{@ext}[:ext].should eq 'ext info'
@@ -30,7 +30,7 @@ describe RubyJSONFormatter do
   end
 
    context 'call with string' do
-    let(:json_formatter){ RubyJSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
+    let(:json_formatter){ Ruby::JSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
     let(:time){ Time.now }
     let(:json_formatter_call){ json_formatter.call('Info', time, 'worker', 'test data') }
     it do
@@ -50,7 +50,7 @@ describe RubyJSONFormatter do
   end
 
   context 'call with json string' do
-    let(:json_formatter){ RubyJSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
+    let(:json_formatter){ Ruby::JSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
     let(:time){ Time.now }
     let(:json_formatter_call){ json_formatter.call('Info', time, 'worker', "{\"data\":\"test data\"}") }
     it do
@@ -70,7 +70,7 @@ describe RubyJSONFormatter do
   end
 
   context 'call with hash' do
-    let(:json_formatter){ RubyJSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
+    let(:json_formatter){ Ruby::JSONFormatter::Base.new('TestApp', {ext: 'ext info'}) }
     let(:time){ Time.now }
     let(:json_formatter_call){ json_formatter.call('Info', time, 'worker', {data:"test data"}) }
     it do
@@ -91,7 +91,7 @@ describe RubyJSONFormatter do
 
   context 'set customer keys' do
     let(:json_formatter) do
-      RubyJSONFormatter::Base.new('TestApp', {ext: 'ext info'}) do |config|
+      Ruby::JSONFormatter::Base.new('TestApp', {ext: 'ext info'}) do |config|
         config[:level] = :cus_level
         config[:type] = :cus_type
         config[:app] = :cus_app
