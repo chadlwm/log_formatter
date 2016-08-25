@@ -10,7 +10,6 @@ outputter = Log4r::StdoutOutputter.new(
   :formatter => Log4r::JSONFormatter::Base.new
 )
 logger.add(outputter)
-logger.level = DEBUG
 
 # plain initialize
 

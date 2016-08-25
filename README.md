@@ -5,6 +5,7 @@ Log Formatter for Ruby and other logger.
 Details as following:
 
 - `log_formatter/ruby_json_formatter'` : ruby logger json formatter
+- `log_formatter/log4r_json_formatter'` : log4r logger json formatter
 
 ## Installation
 
@@ -124,6 +125,26 @@ result:
 ```
 
 full code to see [examples/ruby_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/ruby_logger.rb)
+
+
+## Log4r JSON Formatter
+
+### Get Start
+
+```
+logger = Log4r::Logger.new('Log4RTest')
+outputter = Log4r::StdoutOutputter.new(
+  "console",
+  :formatter => Log4r::JSONFormatter::Base.new
+)
+logger.add(outputter)
+
+logger.debug("Created logger")
+```
+
+other cases just same as ruby json formatter.
+
+full code to see [examples/log4r_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/log4r_logger.rb)
 
 ## Test with Rspec
 
