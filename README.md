@@ -32,7 +32,7 @@ Or install it yourself as:
 require 'logger_formatter.rb'
 require 'log_formatter/ruby_json_formatter'
 
-logger.formatter = JsonFormatterLogger::Formatter::Base.new
+logger.formatter = RubyJSONFormatter::Base.new
 
 logger.info 'test data'
 ```
@@ -40,7 +40,87 @@ logger.info 'test data'
 result:
 
 ```
+{
+  "message": "test data",
+  "log_level": "INFO",
+  "log_type": null,
+  "log_app": null,
+  "log_timestamp": "2016-08-25T15:34:25+08:00"
+}
 ```
+
+### set app and common ext info
+
+```
+logger.formatter =  RubyJSONFormatter::Base.new('app', {'source': 'examples'})
+logger.info 'test data'
+```
+
+result:
+
+```
+{
+  "source": "examples",
+  "message": "test data",
+  "log_level": "INFO",
+  "log_type": null,
+  "log_app": "app",
+  "log_timestamp": "2016-08-25T15:34:25+08:00"
+}
+```
+
+### log with hash
+
+```
+logger.formatter =  RubyJSONFormatter::Base.new('app', {'source': 'examples'})
+
+logger.debug({data: "test data", author: 'chad'})
+```
+
+result:
+
+```
+{
+  "source": "examples",
+  "data": "test data",
+  "author": "chad",
+  "log_level": "DEBUG",
+  "log_type": null,
+  "log_app": "app",
+  "log_timestamp": "2016-08-25T15:34:25+08:00"
+}
+```
+
+### reset the defaut key
+
+json formatter will add `log_type`,`log_level`,`log_timestamp`，`log_app` as default key, but you can change them if needed.
+
+```
+logger.formatter =  RubyJSONFormatter::Base.new('app', {'source': 'examples'}) do |config|
+  config[:level] = :cus_level
+  config[:type] = :cus_type
+  config[:app] = :cus_app
+  config[:timestamp] = :cus_timestamp
+end
+
+logger.debug({data: "test data", age: 18})
+```
+
+result:
+
+```
+{
+  "source": "examples",
+  "data": "test data",
+  age: 18,
+  "cus_level": "DEBUG",
+  "cus_type": null,
+  "cus_app": "app",
+  "cus_timestamp": "2016-08-25T15:34:25+08:00"
+}
+```
+
+full code to see examples/ruby_logger
 
 ## Test with Rspec
 
