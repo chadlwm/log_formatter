@@ -1,5 +1,7 @@
 # LogFormatter
 
+[![Gem Version](https://badge.fury.io/rb/log_formatter.svg)](https://badge.fury.io/rb/log_formatter)
+
 Log Formatter for Ruby and other logger.
 
 Details as following:
