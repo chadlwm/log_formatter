@@ -1,26 +1,26 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruby_log_formatter/version'
+require 'log_formatter/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruby_log_formatter"
-  spec.version       = RubyLogFormatter::VERSION
-  spec.authors       = ["liuwenmin"]
-  spec.email         = ["liuwenin@sensetime.com"]
+  spec.name          = "log_formatter"
+  spec.version       = LogFormatter::VERSION
+  spec.authors       = ["chad_lwm"]
+  spec.email         = ["chad_lwm@hotmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{log formatter}
+  spec.description   = %q{log formatter for json. For Plain Ruby Logger, and for log4r and so on, details to read the REAME.md file.}
+  spec.homepage      = "https://github.com/chadlwm/log_formatter"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
+  # if spec.respond_to?(:metadata)
+  #   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+  # else
+  #   raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
+  # end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
