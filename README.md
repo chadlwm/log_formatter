@@ -32,7 +32,7 @@ Or install it yourself as:
 ### quick start
 
 ```
-require 'log_formatter.rb'
+require 'log_formatter'
 require 'log_formatter/ruby_json_formatter'
 
 logger = Logger.new(STDOUT)
@@ -123,6 +123,32 @@ result:
   "cus_type": null,
   "cus_app": "app",
   "cus_timestamp": "2016-08-25T15:34:25+08:00"
+}
+```
+
+### disable auto generate keys
+
+json formatter will add `log_type`,`log_level`,`log_timestamp`，`log_app` as default key, but you can remove them if needed by setted to false.
+
+```
+logger.formatter =  Ruby::JSONFormatter::Base.new('app', {'source': 'examples'}) do |config|
+  config[:level] = false
+  config[:type] = false
+  config[:app] = :cus_app
+  config[:timestamp] = false
+end
+
+logger.debug({data: "test data", age: 18})
+```
+
+result:
+
+```
+{
+  "source": "examples",
+  "data": "test data",
+  age: 18,
+  "cus_app": "app"
 }
 ```
 

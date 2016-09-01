@@ -115,4 +115,31 @@ describe 'Ruby::JSONFormatter' do
        json_hash['data'].should eq 'test data'
     end
   end
+
+  context 'disable some keys' do
+    let(:json_formatter) do
+      Ruby::JSONFormatter::Base.new('TestApp', {ext: 'ext info'}) do |config|
+        config[:level] = false
+        config[:type] = false
+        config[:app] = :cus_app
+        config[:timestamp] = :cus_timestamp
+      end
+    end
+    let(:time){ Time.now }
+    let(:json_formatter_call){ json_formatter.call('Info', time, 'worker', {data:"test data"}) }
+    it do
+       json_formatter.instance_eval{@app}.should eq 'TestApp'
+       json_formatter.instance_eval{@ext}[:ext].should eq 'ext info'
+       json_formatter.respond_to?(:call).should be_truthy
+       json_formatter_call.class.should eq String
+       json_formatter_call.should match(/\n$/)
+
+       json_hash = JSON.parse(json_formatter_call.chomp)
+       json_hash['cus_level'].should be_nil
+       json_hash['cus_type'].should be_nil
+       json_hash['cus_app'].should eq 'TestApp'
+       json_hash['cus_timestamp'].should eq time.iso8601
+       json_hash['data'].should eq 'test data'
+    end
+  end
 end

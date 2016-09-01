@@ -49,3 +49,19 @@ logger.warn({data: "Nothing to do!"})
 # {"source":"examples","data":"Created logger","cus_level":"DEBUG","cus_type":null,"cus_app":"app","cus_timestamp":"2016-08-25T15:34:25+08:00"}
 # {"source":"examples","data":"Program started","cus_level":"INFO","cus_type":null,"cus_app":"app","cus_timestamp":"2016-08-25T15:34:25+08:00"}
 # {"source":"examples","data":"Nothing to do!","cus_level":"WARN","cus_type":null,"cus_app":"app","cus_timestamp":"2016-08-25T15:34:25+08:00"}
+
+
+# log to disable some auto generate keys by setting to fasle
+logger.formatter =  Ruby::JSONFormatter::Base.new('app', {'source': 'examples'}) do |config|
+  config[:level] = false
+  config[:type] = false
+  config[:app] = :cus_app
+  config[:timestamp] = false
+end
+
+logger.debug({data: "Created logger"})
+logger.info({data: "Program started"})
+logger.warn({data: "Nothing to do!"})
+# {"source":"examples","data":"Created logger","false":"2016-09-01T23:38:07+08:00","cus_app":"app"}
+# {"source":"examples","data":"Program started","false":"2016-09-01T23:38:07+08:00","cus_app":"app"}
+# {"source":"examples","data":"Nothing to do!","false":"2016-09-01T23:38:07+08:00","cus_app":"app"}
