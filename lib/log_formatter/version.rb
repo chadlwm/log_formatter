@@ -1,3 +1,3 @@
 module LogFormatter
-  VERSION = "0.4.0"
+  VERSION = "0.8.0"
 end

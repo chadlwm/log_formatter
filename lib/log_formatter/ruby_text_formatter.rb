@@ -2,13 +2,13 @@ require 'logger'
 require 'json'
 require 'time'
 require File.expand_path('../common', __FILE__)
-require File.expand_path('../common_json', __FILE__)
+require File.expand_path('../common_text', __FILE__)
 
 module Ruby
-  module JSONFormatter
+  module TextFormatter
     class Base < ::Logger::Formatter
       include LogFormatter::Common
-      include LogFormatter::Common::JSON
+      include LogFormatter::Common::Text
 
       def initialize(app = nil, ext = {})
         @app = app

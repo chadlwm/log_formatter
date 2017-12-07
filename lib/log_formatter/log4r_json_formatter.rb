@@ -2,10 +2,12 @@ require 'log4r'
 require 'json'
 require 'time'
 require File.expand_path('../common', __FILE__)
+require File.expand_path('../common_json', __FILE__)
 
 module Log4r::JSONFormatter
   class Base < Log4r::BasicFormatter
     include LogFormatter::Common
+    include LogFormatter::Common::JSON
 
     def initialize(app = nil, ext = {})
       @app = app

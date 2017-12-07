@@ -27,9 +27,9 @@ Or install it yourself as:
 
 ## Usage
 
-## Ruby Logger Json Formatter
+### Ruby Logger Json Formatter
 
-### quick start
+#### quick start
 
 ```
 require 'log_formatter'
@@ -55,7 +55,7 @@ result:
 }
 ```
 
-### set app and common ext info
+#### set app and common ext info
 
 ```
 logger.formatter =  Ruby::JSONFormatter::Base.new('app', {'source': 'examples'})
@@ -75,7 +75,7 @@ result:
 }
 ```
 
-### log with hash
+#### log with hash
 
 ```
 logger.formatter =  Ruby::JSONFormatter::Base.new('app', {'source': 'examples'})
@@ -97,7 +97,7 @@ result:
 }
 ```
 
-### reset the defaut key
+#### reset the defaut key
 
 json formatter will add `log_type`,`log_level`,`log_timestamp`，`log_app` as default key, but you can change them if needed.
 
@@ -126,7 +126,7 @@ result:
 }
 ```
 
-### disable auto generate keys
+#### disable auto generate keys
 
 json formatter will add `log_type`,`log_level`,`log_timestamp`，`log_app` as default key, but you can remove them if needed by setted to false.
 
@@ -155,9 +155,9 @@ result:
 full code to see [examples/ruby_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/ruby_logger.rb)
 
 
-## Log4r JSON Formatter
+### Log4r JSON Formatter
 
-### Get Start
+#### Get Start
 
 ```
 require 'log4r'
@@ -177,6 +177,10 @@ logger.debug("Created logger")
 other cases just same as ruby json formatter.
 
 full code to see [examples/log4r_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/log4r_logger.rb)
+
+### Ruby Logger Text Formatter
+
+
 
 ## Test with Rspec
 
