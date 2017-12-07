@@ -155,6 +155,27 @@ result:
 full code to see [examples/ruby_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/ruby_logger.rb)
 
 
+### Ruby Logger Text Formatter
+
+#### Get Start
+
+```
+require 'log_formatter'
+require 'log_formatter/ruby_json_formatter'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::DEBUG
+
+logger.formatter = Ruby::JSONFormatter::Base.new
+
+logger.debug("Created logger")
+```
+
+other cases just same as ruby json formatter.
+
+full code to see [examples/ruby_text_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/ruby_text_logger.rb)
+
+
 ### Log4r JSON Formatter
 
 #### Get Start
@@ -177,9 +198,6 @@ logger.debug("Created logger")
 other cases just same as ruby json formatter.
 
 full code to see [examples/log4r_logger](https://github.com/chadlwm/log_formatter/blob/master/examples/log4r_logger.rb)
-
-### Ruby Logger Text Formatter
-
 
 
 ## Test with Rspec
