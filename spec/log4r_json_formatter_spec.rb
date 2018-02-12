@@ -35,6 +35,7 @@ describe 'Log4r::JSONFormatter' do
     let(:time){ Time.now }
     let(:json_formatter_format){ json_formatter.format(Log4r::LogEvent.new(2, logger, nil, 'test data')) }
     it do
+       allow(Time).to receive(:now).and_return(time)
        json_formatter.instance_eval{@app}.should eq 'TestApp'
        json_formatter.instance_eval{@ext}[:ext].should eq 'ext info'
        json_formatter.respond_to?(:format).should be_truthy
@@ -45,7 +46,7 @@ describe 'Log4r::JSONFormatter' do
        json_hash['log_level'].should eq 'INFO'
        json_hash['log_type'].should eq 'Log4RTest'
        json_hash['log_app'].should eq 'TestApp'
-       json_hash['log_timestamp'].should eq time.iso8601
+       json_hash['log_timestamp'].should eq time.iso8601(3)
        json_hash['message'].should eq 'test data'
     end
   end
@@ -56,6 +57,7 @@ describe 'Log4r::JSONFormatter' do
     let(:time){ Time.now }
     let(:json_formatter_format){ json_formatter.format(Log4r::LogEvent.new(2, logger, nil, "{\"data\":\"test data\"}")) }
     it do
+       allow(Time).to receive(:now).and_return(time)
        json_formatter.instance_eval{@app}.should eq 'TestApp'
        json_formatter.instance_eval{@ext}[:ext].should eq 'ext info'
        json_formatter.respond_to?(:format).should be_truthy
@@ -66,7 +68,7 @@ describe 'Log4r::JSONFormatter' do
        json_hash['log_level'].should eq 'INFO'
        json_hash['log_type'].should eq 'Log4RTest'
        json_hash['log_app'].should eq 'TestApp'
-       json_hash['log_timestamp'].should eq time.iso8601
+       json_hash['log_timestamp'].should eq time.iso8601(3)
        json_hash['data'].should eq 'test data'
     end
   end
@@ -77,6 +79,7 @@ describe 'Log4r::JSONFormatter' do
     let(:time){ Time.now }
     let(:json_formatter_format){ json_formatter.format(Log4r::LogEvent.new(2, logger, nil, {data:"test data"})) }
     it do
+       allow(Time).to receive(:now).and_return(time)
        json_formatter.instance_eval{@app}.should eq 'TestApp'
        json_formatter.instance_eval{@ext}[:ext].should eq 'ext info'
        json_formatter.respond_to?(:format).should be_truthy
@@ -87,7 +90,7 @@ describe 'Log4r::JSONFormatter' do
        json_hash['log_level'].should eq 'INFO'
        json_hash['log_type'].should eq 'Log4RTest'
        json_hash['log_app'].should eq 'TestApp'
-       json_hash['log_timestamp'].should eq time.iso8601
+       json_hash['log_timestamp'].should eq time.iso8601(3)
        json_hash['data'].should eq 'test data'
     end
   end
@@ -105,6 +108,7 @@ describe 'Log4r::JSONFormatter' do
     let(:time){ Time.now }
     let(:json_formatter_format){ json_formatter.format(Log4r::LogEvent.new(2, logger, nil, {data:"test data"})) }
     it do
+       allow(Time).to receive(:now).and_return(time)
        json_formatter.instance_eval{@app}.should eq 'TestApp'
        json_formatter.instance_eval{@ext}[:ext].should eq 'ext info'
        json_formatter.respond_to?(:format).should be_truthy
@@ -115,7 +119,7 @@ describe 'Log4r::JSONFormatter' do
        json_hash['cus_level'].should eq 'INFO'
        json_hash['cus_type'].should eq 'Log4RTest'
        json_hash['cus_app'].should eq 'TestApp'
-       json_hash['cus_timestamp'].should eq time.iso8601
+       json_hash['cus_timestamp'].should eq time.iso8601(3)
        json_hash['data'].should eq 'test data'
     end
   end
