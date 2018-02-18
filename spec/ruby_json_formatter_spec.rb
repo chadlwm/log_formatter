@@ -44,7 +44,7 @@ describe 'Ruby::JSONFormatter' do
        json_hash['log_level'].should eq 'Info'
        json_hash['log_type'].should eq 'worker'
        json_hash['log_app'].should eq 'TestApp'
-       json_hash['log_timestamp'].should eq time.iso8601
+       json_hash['log_timestamp'].should eq time.iso8601(3)
        json_hash['message'].should eq 'test data'
     end
   end
@@ -64,7 +64,7 @@ describe 'Ruby::JSONFormatter' do
        json_hash['log_level'].should eq 'Info'
        json_hash['log_type'].should eq 'worker'
        json_hash['log_app'].should eq 'TestApp'
-       json_hash['log_timestamp'].should eq time.iso8601
+       json_hash['log_timestamp'].should eq time.iso8601(3)
        json_hash['data'].should eq 'test data'
     end
   end
@@ -84,7 +84,7 @@ describe 'Ruby::JSONFormatter' do
        json_hash['log_level'].should eq 'Info'
        json_hash['log_type'].should eq 'worker'
        json_hash['log_app'].should eq 'TestApp'
-       json_hash['log_timestamp'].should eq time.iso8601
+       json_hash['log_timestamp'].should eq time.iso8601(3)
        json_hash['data'].should eq 'test data'
     end
   end
@@ -111,7 +111,7 @@ describe 'Ruby::JSONFormatter' do
        json_hash['cus_level'].should eq 'Info'
        json_hash['cus_type'].should eq 'worker'
        json_hash['cus_app'].should eq 'TestApp'
-       json_hash['cus_timestamp'].should eq time.iso8601
+       json_hash['cus_timestamp'].should eq time.iso8601(3)
        json_hash['data'].should eq 'test data'
     end
   end
@@ -138,7 +138,7 @@ describe 'Ruby::JSONFormatter' do
        json_hash['cus_level'].should be_nil
        json_hash['cus_type'].should be_nil
        json_hash['cus_app'].should eq 'TestApp'
-       json_hash['cus_timestamp'].should eq time.iso8601
+       json_hash['cus_timestamp'].should eq time.iso8601(3)
        json_hash['data'].should eq 'test data'
     end
   end

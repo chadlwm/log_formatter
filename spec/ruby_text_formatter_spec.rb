@@ -44,7 +44,7 @@ describe 'Ruby::TextFormatter' do
        text.should match(/log_level:Info/)
        text.should match(/log_type:worker/)
        text.should match(/log_app:TestApp/)
-       text.include?("log_timestamp:#{time.iso8601}").should be_truthy
+       text.include?("log_timestamp:#{time.iso8601(3)}").should be_truthy
        text.should match(/message:test data/)
     end
   end
@@ -64,7 +64,7 @@ describe 'Ruby::TextFormatter' do
        text.should match(/log_level:Info/)
        text.should match(/log_type:worker/)
        text.should match(/log_app:TestApp/)
-       text.include?("log_timestamp:#{time.iso8601}").should be_truthy
+       text.include?("log_timestamp:#{time.iso8601(3)}").should be_truthy
        text.should match(/data:test data/)
     end
   end
@@ -84,7 +84,7 @@ describe 'Ruby::TextFormatter' do
        text.should match(/log_level:Info/)
        text.should match(/log_type:worker/)
        text.should match(/log_app:TestApp/)
-       text.include?("log_timestamp:#{time.iso8601}").should be_truthy
+       text.include?("log_timestamp:#{time.iso8601(3)}").should be_truthy
        text.should match(/data:test data/)
     end
   end
@@ -111,7 +111,7 @@ describe 'Ruby::TextFormatter' do
        text.should match(/cus_level:Info/)
        text.should match(/cus_type:worker/)
        text.should match(/cus_app:TestApp/)
-       text.include?("cus_timestamp:#{time.iso8601}").should be_truthy
+       text.include?("cus_timestamp:#{time.iso8601(3)}").should be_truthy
        text.should match(/data:test data/)
     end
   end
@@ -136,7 +136,7 @@ describe 'Ruby::TextFormatter' do
     
        text = json_formatter_call.chomp
        text.should match(/cus_app:TestApp/)
-       text.include?("cus_timestamp:#{time.iso8601}").should be_truthy
+       text.include?("cus_timestamp:#{time.iso8601(3)}").should be_truthy
        text.should match(/data:test data/)
     end
   end

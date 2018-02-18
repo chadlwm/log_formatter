@@ -15,7 +15,7 @@ module LogFormatter::Common::Text
     event[@config[:level].freeze] ||= severity if @config[:level]
     event[@config[:type].freeze] = progname if @config[:type]
     event[@config[:app].freeze] = @app if @config[:app]
-    event[@config[:timestamp].freeze] = current_time(time).iso8601 if @config[:timestamp]
+    event[@config[:timestamp].freeze] = current_time(time).iso8601(3) if @config[:timestamp]
     log_msg = []
     @ext.merge(event).each do |k, v|
       log_msg << "#{k}:#{v}"
